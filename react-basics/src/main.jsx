@@ -21,49 +21,55 @@ function ProductList() {
       "image": "phone1.webp",
       "title": "Iphone",
       "description": "Lorem ipsum",
-      "price": 80000
+      "price": 80000,
+      "is_active": false
     },
     {
       "image": "phone1.webp",
       "title": "Iphone",
       "description": "Lorem ipsum",
-      "price": 40000
+      "price": 40000,
+      "is_active": false
     },
     {
       "image": "phone1.webp",
       "title": "Iphone2",
       "description": "Lorem ipsum",
-      "price": 10000
+      "price": 10000,
+      "is_active": true
     },
     {
       "image": "phone1.webp",
       "title": "Iphone3",
       "description": "Lorem ipsum",
-      "price": 20000
+      "price": 20000,
+      "is_active": false
     }
   ]
-  const product_item = {
-    "image": "phone1.webp",
-    "title": "Iphone",
-    "description": "Lorem ipsum",
-    "price": 80000
-  };
+  // const items = [];
   return (
     <>
     <h2>Product List</h2>
     {
-      items.map((item, index) => (
-        <Product 
-        key={ index }
-        productObj={ item } />
-    ))}
+      items.length > 0 ? (
+        <div id="product-list">
+        {
+          items.map((item, index) => (
+            <Product key={ index } productObj={ item } />
+          ))
+        }
+        </div>   
+      ) : (
+        <p>Şu anda satışta olan ürün yok!</p>
+      )
+    }
     </>
   )
 }
 
 function Product({ productObj }) {
   console.log(productObj);
-
+  if(!productObj.is_active) return null;
   return (
     <div>
       <img src={ '/img/' + productObj.image }></img>
@@ -86,7 +92,7 @@ function Footer() {
           <p>Akşam {closeHour}'ye kadar sipariş verebilirsiniz.</p>
         ) : 
         (
-          <p>Şu an kapalıyız.</p>
+          <p>Şu an kapalıyız. Açılş saati {openHour}</p>
         )
       }
     </footer>
