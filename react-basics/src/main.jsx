@@ -88,7 +88,7 @@ function Product({ productObj }) {
       <div className='card-body'>
         <h2 className='card-title'>{ productObj.title }</h2>
         <p className='card-text'>{ productObj.description }</p>
-        <span className={ `badge text-bg-success f20 ${productObj.price < 100000 ? "discount" : "price"}`}>{ productObj.price } TL</span>
+        <span className='badge text-bg-success'>{ productObj.price } TL</span>
       </div>
       
     </div>
